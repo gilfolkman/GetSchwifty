@@ -1,0 +1,11 @@
+class VictoryViewer{
+    constructor(){
+    }
+
+    delete()
+    {
+        alert("finish")
+        const alldiv = document.getElementById("board");
+        alldiv.remove();
+    }
+}

@@ -5,7 +5,7 @@ const viewers = {
     boardViewer : new BoardViewer(),
     genrateBoardViewer : new GenrateBoardViewer(),
     startGame : new StartGame(),
-    victoryViewer : new VictoryViewer()
+    finishGame : new VictoryViewer()
 }
 
 controller = new GameController (viewers)

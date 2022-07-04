@@ -8,14 +8,14 @@ class GameController{
 
     finishGame(){
         var name = this.viewrs.finishGame.delete();
-        console.log(name)
+        console.log(name);
+        this.menu();
     }
 
     playGame(){
         this.c = new BoardController(this.boardModel);
         this.viewrs.genrateBoardViewer.genrateBoard(this.boardModel.board);
-        this.viewrs.boardViewer.updateAction(this.updateD(this.c,this.viewrs.boardViewer));
-        return new Promise(
+        this.viewrs.boardViewer.updateAction(this.updateD(this.c,this.viewrs.boardViewer, this.finishGame,this.viewrs.finishGame ));
     }
 
     startGame () {
@@ -26,18 +26,28 @@ class GameController{
         this.boardModel = genrateBoard.shuffle();
     }
 
-    updateD(p,b){
+    updateD(p,b,finishGame, finishGameViewer){
         function update(x,y)
         {
             p.canSwap([x,y])
             b.update(p.boardModel.board)
+
         }
         return update;
+    }
+
+    async awaitFinished(){
+        while(!this.c.cheackForWin())
+        {
+            await new Promise(r => setTimeout(r, 2000));
+        }
+        this.finishGame()
     }
 
     menu(){
         this.startGame();
         this.playGame();
+        this.awaitFinished();
     }
 
      

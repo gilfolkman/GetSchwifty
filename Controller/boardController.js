@@ -87,7 +87,7 @@ class BoardController {
     }
 
     shuffleBoardAction(){
-        for (let i =0; i<20; i++)
+        for (let i =0; i<this.boardModel.getCol() **this.boardModel.getRow()-1 ; i++)
         {
             var options = this.swapOptions();
             var y = this.getRandom(options)

@@ -1,9 +1,15 @@
 class Board {
-    constructor(board, blankSpace) {
+    constructor(board) {
         this.board = board
-        this.blankSpace = blankSpace
     }
 
+    getPiece(x,y){
+        return this.board[x][y];
+    }
+
+    setPiece(x,y, piece){
+        this.board[x][y] = piece;
+    }
     
     getBlankSpace() {
         for (let x =0; x<this.board[0].length; x ++)

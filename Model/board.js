@@ -3,6 +3,8 @@ class Board {
         this.board = board
         this.blankSpace = blankSpace
     }
+
+    
     getBlankSpace() {
         for (let x =0; x<this.board[0].length; x ++)
         {

@@ -8,7 +8,7 @@ var p = new Array();
 s = b.shuffleBoardAction()
 console.log("shuffle")
 console.log(s)
-let board = new Board(k,[2,2])
+let board = new Board(k)
 console.log(board)
 var t = new BoardViewer()
 var m = new GenrateBoardViewer()

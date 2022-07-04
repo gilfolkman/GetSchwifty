@@ -13,6 +13,7 @@ class ShuffleBoardController{
     }
 
     genrateUnShuffleBoard(){
+        //TODO
         var n = this.genratePieces()
         var m = []
         var i =0;

@@ -1,10 +1,20 @@
 body {
     font-weight: 700;
     font-size: 24px;
-    background-color: #043946;
+    background-color: #ffffff;
     -webkit-tap-highlight-color: transparent;
-    khtml-tap-highlight-color: transparent; }  
-.button{
-    color: #043946;
-    flex-direction: column;
-}
+ }  
+    button {
+        background-color: #a198a1; /* Green */
+        border: 1cm;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-flex;
+        font-size: 16px;
+        justify-content: center;
+        
+      }
+
+        

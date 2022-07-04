@@ -1,11 +1,17 @@
-controller = new GameController ()
+
+
+
+const viewers = {
+    boardViewer : new BoardViewer(),
+    genrateBoardViewer : new GenrateBoardViewer(),
+    startGame : new StartGame(),
+    victoryViewer : new VictoryViewer()
+}
+
+controller = new GameController (viewers)
 start = new StartGame();
 b = new BoardViewer();
-controller.startGame(start,b);
-
-
-
-
+controller.menu();
 // var col = window. prompt("Enter size: ");
 // var h = new ShuffleBoardController(col, col);
 // k = h.genrateUnShuffleBoard();

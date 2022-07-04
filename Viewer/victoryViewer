@@ -4,8 +4,9 @@ class VictoryViewer{
 
     delete()
     {
-        alert("finish")
+        var name = window. prompt("Won \n enter your name:  ");
         const alldiv = document.getElementById("board");
         alldiv.remove();
+        return name;
     }
 }

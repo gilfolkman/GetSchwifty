@@ -1,44 +1,44 @@
 class GameController{
-    constructor()
+    constructor(viewrs)
     {
         this.boardModel;
-        this.c;
-        this.v;
-    }
-
-    startGame(){
-        
+        this.viewrs = viewrs;
+        this.c = null;
     }
 
     finishGame(){
-
+        var name = this.viewrs.finishGame.delete();
+        console.log(name)
     }
 
     playGame(){
-
+        this.c = new BoardController(this.boardModel);
+        this.viewrs.genrateBoardViewer.genrateBoard(this.boardModel.board);
+        this.viewrs.boardViewer.updateAction(this.updateD(this.c,this.viewrs.boardViewer));
+        return new Promise(
     }
 
-    startGame = (startGameViewer,boardViewer) => {
-        var size =startGameViewer.getRowFromClient();
+    startGame () {
+        console.log(this.viewrs)
+        var size = this.viewrs.startGame.getRowFromClient();
         var genrateBoard = new ShuffleBoardController(size,size);
         this.boardModel = genrateBoard.genrateUnShuffleBoard(); 
-        this.boardModel = genrateBoard.shuffle(); 
-        var z = new GenrateBoardViewer();
-        this.v = boardViewer;
-        this.c  = new BoardController(this.boardModel);
-        z.genrateBoard(this.boardModel.board,(x,y)=>{this.update(x,y)});
-    }
-    update(x,y){
-        this.c.canSwap([x,y])
-        this.v.update(this.boardModel.board)
-        if (this.c.cheackForWin())
-        {
-            var a = new VictoryViewer()
-            a.delete();
-            this.startGame()
-        }
+        this.boardModel = genrateBoard.shuffle();
     }
 
+    updateD(p,b){
+        function update(x,y)
+        {
+            p.canSwap([x,y])
+            b.update(p.boardModel.board)
+        }
+        return update;
+    }
+
+    menu(){
+        this.startGame();
+        this.playGame();
+    }
 
      
     

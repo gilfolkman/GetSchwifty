@@ -36,7 +36,6 @@ class BoardController {
 
     swapEmpty(loc)
     {
-        console.log(loc)
         var x1 = this.getBlankSpace()[0];
         var y1 = this.getBlankSpace()[1];
         var x = this.boardModel.getPiece(loc[0],loc[1]);
@@ -45,7 +44,7 @@ class BoardController {
         this.boardModel.setPiece(x1, y1, x);
     }
 
-    canSwap(loc)
+    canSwap(loc, moves)
     {
         var x1 = this.getBlankSpace()[0];
         var y1 = this.getBlankSpace()[1];
@@ -53,6 +52,7 @@ class BoardController {
         var y2 = loc[1]
         if ((x1+1 == x2 && y2 == y1) || (x1-1 == x2 && y2 == y1) || (x1 == x2 && y2 == y1-1) || (x1 == x2 && y2 == y1+1))
         {
+            moves.addUserMove(loc, this.getBlankSpace());
             this.swapEmpty(loc);
         }
     }
@@ -86,13 +86,13 @@ class BoardController {
         return options[Math.floor((Math.random()*options.length))];
     }
 
-    shuffleBoardAction(){
+    shuffleBoardAction(moves){
         for (let i =0; i<this.boardModel.getCol() **this.boardModel.getRow()-1 ; i++)
         {
             var options = this.swapOptions();
-            var y = this.getRandom(options)
+            var y = this.getRandom(options);
             this.swapEmpty(y);
-            console.log(options)
+            moves.addShuffleMove(y,this.getBlankSpace());
         }
         return this.boardModel;
     }    

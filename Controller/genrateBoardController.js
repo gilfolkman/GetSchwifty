@@ -34,9 +34,9 @@ class ShuffleBoardController{
         return this.board
     }
 
-    shuffle(){
+    shuffle(moves){
         var shufleBoard = new BoardController(this.board);
-        shufleBoard.shuffleBoardAction();
+        shufleBoard.shuffleBoardAction(moves);
         return this.board;
     }
 }

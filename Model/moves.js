@@ -1,4 +1,4 @@
-class moves{
+class Moves{
     constructor(){
         this.shuffleMoves = []
         this.userMoves = []
@@ -9,7 +9,7 @@ class moves{
     }
 
     addUserMove(move){
-        this.shuffleMoves.push(move);
+        this.userMoves.push(move);
     }
 
     getLastMove(){

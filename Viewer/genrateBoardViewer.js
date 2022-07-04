@@ -1,8 +1,7 @@
 class GenrateBoardViewer
 {
     constructor(){}
-    genrateBoard(board, action){
-        console.log(board)
+    genrateBoard(board){
         var l = document.createElement("div");
         l.setAttribute("id", "board");
 
@@ -19,5 +18,8 @@ class GenrateBoardViewer
             l.appendChild(div);
 
         }
+        var moves = document.createElement("label");
+        moves.setAttribute("id", "moves");
+        l.appendChild(moves);
         document.body.appendChild(l);
 }}

@@ -12,6 +12,10 @@ class Moves{
         this.userMoves.push(move);
     }
 
+    getUserNumberMoves(){
+        return this.userMoves.length;
+    }
+
     getLastMove(){
         if (this.userMoves.length != 0){
             return this.userMoves.pop();

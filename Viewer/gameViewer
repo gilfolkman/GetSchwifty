@@ -1,0 +1,20 @@
+class GameViewer{
+    constructor(boardView){
+        this.boardView = boardView;
+        this.stateCurrently = "stop"
+    }
+
+
+    create(){
+        var game = document.createElement("div");
+        var timer = document.createElement("label");
+        timer.setAttribute("id", "timer");
+        game.appendChild(timer)
+        document.body.appendChild(game);
+    }
+
+    update(timer){
+        var t = document.getElementById("timer");
+        t.innerHTML = "timer:" + timer;
+    }
+}

@@ -5,12 +5,10 @@ class BoardController {
 
     
     getBlankSpace() {
-        console.log(this.boardModel );
         for (let x =0; x<this.boardModel.getCol(); x ++)
         {
             for (let y = 0; y<this.boardModel.getRow(); y++)
             {
-                console.log(this.boardModel.getPiece(x,y));
                 if (this.boardModel.getPiece(x,y) == null)
                 {
                     return [x,y];

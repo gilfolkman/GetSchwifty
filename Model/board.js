@@ -14,7 +14,6 @@ class Board {
         return this.board.length;
     }
     getCol(){
-        console.log(this.board)
         return this.board.length;
     }
 

@@ -1,7 +1,7 @@
 class BoardViewer
 {
     constructor(){}
-    update(board)
+    update(board, moves)
     {
         const alldiv = document.getElementById("board");
         for (let x =0; x<board[0].length; x ++)
@@ -14,6 +14,8 @@ class BoardViewer
             a.innerHTML = board[x][y]? board[x][y].data : "n" ;
         }
         }
+        const move = document.getElementById("moves");
+        move.innerHTML = "moves:" + moves;
     }
 
     updateAction(action){
@@ -25,7 +27,7 @@ class BoardViewer
         for (let y = 0; y<div.children.length; y++)
         {
             const a = div.children[y];
-            a.addEventListener("click", () => {console.log(action(x,y), action);action(x,y) })
+            a.addEventListener("click", () => {action(x,y)})
         }
         }
     }

@@ -1,4 +1,5 @@
-let b = new ShuffleBoard(3,3);
+var col = window. prompt("Enter size: ");
+let b = new ShuffleBoard(col, col);
 n = b.genratePieces();
 console.log(n)
 k = b.genrateUnShuffleBoard()

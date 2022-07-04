@@ -6,6 +6,8 @@ k = b.genrateUnShuffleBoard()
 console.log(k)
 var p = new Array();
 s = b.shuffleBoardAction()
+
+
 console.log("shuffle")
 console.log(s)
 let board = new Board(k)
@@ -13,6 +15,7 @@ console.log(board)
 var t = new BoardViewer()
 var m = new GenrateBoardViewer()
 m.genrateBoard(board.board, handleClick);
+z = new BoardController(board)
 
 // function update()
 // {
@@ -68,8 +71,12 @@ m.genrateBoard(board.board, handleClick);
 
 function handleClick(x,y)
 {
-    board.canSwap([x,y]);
+    z.canSwap([x,y])
     t.update(board.board);
+    if (z.cheackForWin())
+    {
+        alert("won")
+    }
 }
 
 console.log(p);

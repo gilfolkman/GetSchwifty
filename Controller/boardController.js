@@ -1,29 +1,17 @@
-class Board {
-    constructor(board) {
-        this.board = board
+class BoardController {
+    constructor(boardModel) {
+        this.boardModel = boardModel
     }
 
-    getPiece(x,y){
-        return this.board[x][y];
-    }
-    setPiece(x,y, piece){
-        this.board[x][y] = piece;
-    }
-
-    getRow(){
-        return this.board.length;
-    }
-    getCol(){
-        console.log(this.board)
-        return this.board.length;
-    }
-
+    
     getBlankSpace() {
-        for (let x =0; x<this.board[0].length; x ++)
+        console.log(this.boardModel.getCol() );
+        for (let x =0; x<this.boardModel.getCol(); x ++)
         {
-            for (let y = 0; y<this.board[0].length; y++)
+            for (let y = 0; y<this.boardModel.getRow(); y++)
             {
-                if (this.board[x][y] == null)
+                console.log(this.boardModel.getPiece(x,y));
+                if (this.boardModel.getPiece(x,y) == null)
                 {
                     return [x,y];
                 }
@@ -32,35 +20,37 @@ class Board {
     }
 
     cheackForWin() {
-        for (let x =0; x<this.board[0].length; x ++)
+        for (let x =0; x<this.boardModel.getCol(); x ++)
         {
-            for (let y = 0; y<this.board[0].length; y++)
+            for (let y = 0; y<this.boardModel.getRow(); y++)
             {
-                if (!(this.board[x][y] == null ||(this.board[x][y].loc[0] == x  && this.board[x][y].loc[1]==y )))
+                if (this.boardModel.getPiece(x,y) != null){
+                if (this.boardModel.getPiece(x,y).loc[0] != x || this.boardModel.getPiece(x,y).loc[1] != y)
                 {
                     return false;
                 }
-            }
+            }}
         }
         return true;
     }
     swap(loc1, loc2) {
-        var x = this.board[loc1[0]][loc1[1]]
-        var y = this.board[loc2[0]][loc2[1]]
+        var x = this.boardModel.getPiece(loc1[0],loc1[1])
+        var y = this.boardModel.getPiece(loc2[0],loc2[1])
         console.log(x)
         console.log(y)
-        this.board[loc1[0]][loc1[1]]  = y
-        this.board[loc2[0]][loc2[1]] = x
+        this.boardModel.setPiece(loc1[0],loc1[1],y);
+        this.boardModel.setPiece(loc2[0],loc2[1],x);
     }
 
     swapEmpty(loc)
     {
+        console.log(loc)
         var x1 = this.getBlankSpace()[0];
         var y1 = this.getBlankSpace()[1];
-        var x = this.board[loc[0]][loc[1]]
-        var y = this.board[x1][y1]
-        this.board[loc[0]][loc[1]]  = y
-        this.board[x1][y1] = x
+        var x = this.boardModel.getPiece(loc[0],loc[1]);
+        var y = this.boardModel.getPiece(x1,y1);
+        this.boardModel.setPiece(loc[0],loc[1], y);
+        this.boardModel.setPiece(x1, y1, x);
     }
 
     canSwap(loc)
@@ -80,7 +70,7 @@ class Board {
         var x1 = this.getBlankSpace()[0];
         var y1 = this.getBlankSpace()[1];
         var options = []
-        if (x1+1 < this.board[0].length)
+        if (x1+1 < this.boardModel.getCol())
         {
             options.push([x1+1, y1])
         }
@@ -88,7 +78,7 @@ class Board {
         {
             options.push([x1-1,y1])
         }
-        if (y1 + 1 < this.board[0].length)
+        if (y1 + 1 < this.boardModel.getRow())
         {
             options.push([x1,y1+1])
         }

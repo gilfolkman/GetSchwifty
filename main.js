@@ -11,27 +11,29 @@ console.log(s)
 let board = new Board(k,[2,2])
 console.log(board)
 var t = new BoardViewer()
+var m = new GenrateBoardViewer()
+m.genrateBoard(board.board, handleClick);
 
-function update()
-{
-    console.log(board)
-    const alldiv = document.getElementById("board");
-    for (let x =0; x<board.board[0].length; x ++)
-    {
-    const div = alldiv.children[x];
-    console.log(div.children.length)
-    for (let y = 0; y<div.children.length; y++)
-    {
-        const a = div.children[y];
-        console.log(a)
-        a.innerHTML = board.board[x][y]? board.board[x][y].data : "n" ;
-    }
-    }
-    if (board.cheackForWin())
-    {
-        alert("finished game")
-    }
-}
+// function update()
+// {
+//     console.log(board)
+//     const alldiv = document.getElementById("board");
+//     for (let x =0; x<board.board[0].length; x ++)
+//     {
+//     const div = alldiv.children[x];
+//     console.log(div.children.length)
+//     for (let y = 0; y<div.children.length; y++)
+//     {
+//         const a = div.children[y];
+//         console.log(a)
+//         a.innerHTML = board.board[x][y]? board.board[x][y].data : "n" ;
+//     }
+//     }
+//     if (board.cheackForWin())
+//     {
+//         alert("finished game")
+//     }
+// }
 // board.board.forEach(element => {
 //     const div = document.createElement("div")
 //     p.push(div);
@@ -43,26 +45,32 @@ function update()
 //     }    )
 
 // });
-var l = document.createElement("div");
-l.setAttribute("id", "board");
+// var l = document.createElement("div");
+// l.setAttribute("id", "board");
 
-for (let x =0; x<board.board[0].length; x ++)
+// for (let x =0; x<board.board[0].length; x ++)
+// {
+//     const div = document.createElement("div","divs")
+//     p.push(div);
+//     for (let y = 0; y<board.board[0].length; y++)
+//     {
+//         const a = document.createElement("button" , "piece");
+//         a.innerHTML = board.board[x][y]? board.board[x][y].data: "n" ;
+//         a.addEventListener("click", () => {
+//             board.canSwap([x,y]);
+//             t.update(board.board);})
+//         div.appendChild(a);
+//     }
+//     l.appendChild(div);
+
+// }
+// document.body.appendChild(l);
+
+function handleClick(x,y)
 {
-    const div = document.createElement("div","divs")
-    p.push(div);
-    for (let y = 0; y<board.board[0].length; y++)
-    {
-        const a = document.createElement("button" , "piece");
-        a.innerHTML = board.board[x][y]? board.board[x][y].data: "n" ;
-        a.addEventListener("click", () => {
-            board.canSwap([x,y]);
-            t.update(board.board);})
-        div.appendChild(a);
-    }
-    l.appendChild(div);
-
+    board.canSwap([x,y]);
+    t.update(board.board);
 }
-document.body.appendChild(l);
 
 console.log(p);
 console.log(board.cheackForWin());
